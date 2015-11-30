@@ -2,13 +2,14 @@
 #include "Simple_window.h"
 #include "Graph.h"
 #include "GUI.h"
-
+#include <algorithm>
 Vector_ref<Ellipse> Pancake_Maker(int level) {
 	Vector_ref<Ellipse> pancakes;
 	for (int i = 0; i < level; i++) {
 		Ellipse* temp = new Ellipse(Point(300, 300-20*i), 100-3*i, 20);
 		pancakes.push_back(temp);
 	}
+	//std::random_shuffle(&pancakes[0],&pancakes[level]);
 	return pancakes;
 }
 
@@ -16,11 +17,14 @@ int main()
 try {
   Simple_window win1(Point(100,200),600,400, "pankake");
 	Vector_ref<Ellipse> pancakes = Pancake_Maker(8);
-	Text Splash_text(Point(200,200), "James Dean faked his own death");
+	Text Splash_text(Point(100,200), "James Dean faked his own death");
 	win1.attach(Splash_text);
+	Image Splash_image(Point(0,59), "delicious-pancake.gif", Suffix::gif);
+	win1.attach(Splash_image);
 	win1.wait_for_button();
 	win1.detach(Splash_text);
-	Text Rules(Point(200,200), "Rules are for nerds");
+	win1.detach(Splash_image);
+	Text Rules(Point(50,200), "Minions is actually up for the Best Animated Picture Oscar this year");
 	win1.attach(Rules);
 	win1.wait_for_button();
 	win1.detach(Rules);

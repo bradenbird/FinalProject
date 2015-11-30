@@ -2,29 +2,28 @@
 #include "Simple_window.h"
 #include "Graph.h"
 #include "GUI.h"
-#include <algorithm>
 Vector_ref<Ellipse> Pancake_Maker(int level) {
 	Vector_ref<Ellipse> pancakes;
 	for (int i = 0; i < level; i++) {
 		Ellipse* temp = new Ellipse(Point(300, 300-20*i), 100-3*i, 20);
 		pancakes.push_back(temp);
 	}
-	//std::random_shuffle(&pancakes[0],&pancakes[level]);
+//	random_shuffle(pancakes[0],pancakes[level]);
 	return pancakes;
 }
 
 int main()
 try {
-  Simple_window win1(Point(100,200),600,400, "pankake");
-	Vector_ref<Ellipse> pancakes = Pancake_Maker(8);
-	Text Splash_text(Point(100,200), "James Dean faked his own death");
-	win1.attach(Splash_text);
-	Image Splash_image(Point(0,59), "delicious-pancake.gif", Suffix::gif);
+  Simple_window win1(Point(100,200),600,400, "pancake");
+	//Vector_ref<Ellipse> pancakes = Pancake_Maker(9);
+	Image Splash_image(Point(0,0), "basic-pancake-recipe.jpg", Suffix::jpg);
+	Text Splash_text(Point(100,300), "Obligatory splash screen to appeal to the grading rubrik nazis");
 	win1.attach(Splash_image);
+	win1.attach(Splash_text);
 	win1.wait_for_button();
 	win1.detach(Splash_text);
 	win1.detach(Splash_image);
-	Text Rules(Point(50,200), "Minions is actually up for the Best Animated Picture Oscar this year");
+	Text Rules(Point(50,200), "Rules are for nerds");
 	win1.attach(Rules);
 	win1.wait_for_button();
 	win1.detach(Rules);
@@ -32,13 +31,20 @@ try {
 	win1.attach(Level_Chooser);
 	win1.wait_for_button();
 	win1.detach(Level_Chooser);
-	int level = 7;
-	for(int i=0; i < level; i++) {
-        	pancakes[i].set_fill_color(94);
-		win1.attach(pancakes[i]);
-  	}
-
-	win1.wait_for_button();
+	int level =1;
+	while (level != 0) {
+		cout << "type your level between 1 and 9" << endl;
+		cin >> level;
+		Vector_ref<Ellipse> pancakes = Pancake_Maker(level);
+		for(int i=0; i < level; i++) {
+        		pancakes[i].set_fill_color(94);
+			win1.attach(pancakes[i]);
+  		}
+		win1.wait_for_button();
+		for (int i = 0; i < level; i++) {
+			win1.detach(pancakes[i]);
+		}
+	}
 
 	return 0;
 }

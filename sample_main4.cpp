@@ -2,13 +2,17 @@
 #include "Simple_window.h"
 #include "Graph.h"
 #include "GUI.h"
-Vector_ref<Ellipse> Pancake_Maker(int level) {
-	Vector_ref<Ellipse> pancakes;
+vector<Ellipse*> Pancake_Maker(int level) {
+	vector<Ellipse*> pancakes;
+	vector<int> integers;
 	for (int i = 0; i < level; i++) {
-		Ellipse* temp = new Ellipse(Point(300, 300-20*i), 100-3*i, 20);
+		integers.push_back(100-7*i);	
+	}
+	random_shuffle(integers.begin(),integers.end());
+	for (int j = 0; j < level; j++) {
+		Ellipse* temp = new Ellipse(Point(300, 300-20*j), integers[j], 20);
 		pancakes.push_back(temp);
 	}
-//	random_shuffle(pancakes[0],pancakes[level]);
 	return pancakes;
 }
 
@@ -35,17 +39,21 @@ try {
 	while (level != 0) {
 		cout << "type your level between 1 and 9" << endl;
 		cin >> level;
-		Vector_ref<Ellipse> pancakes = Pancake_Maker(level);
+		vector<Ellipse*> pancakes = Pancake_Maker(level);
 		for(int i=0; i < level; i++) {
-        		pancakes[i].set_fill_color(94);
-			win1.attach(pancakes[i]);
+        		pancakes[i]->set_fill_color(94);
+			win1.attach(*(pancakes[i]));
   		}
 		win1.wait_for_button();
 		for (int i = 0; i < level; i++) {
-			win1.detach(pancakes[i]);
+			win1.detach(*(pancakes[i]));
 		}
+	
+	for (int i = 0; i < pancakes.size(); ++i)
+	{
+		delete pancakes[i];
 	}
-
+}
 	return 0;
 }
 catch(exception& e) {

@@ -7,12 +7,12 @@ Score::Score(String s, int n)
     score = n;
 }
 
-string Score::getName()
+string Score::get_name()
 {
     return name;
 }
 
-int Score::getScore()
+int Score::get_score()
 {
     return score;
 }

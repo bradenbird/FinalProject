@@ -8,13 +8,14 @@
 #include "std_lib_facilities_4.h"
 #include "Score.h"
 
+//A class to manage viewing and updating of the high scores, through the usage of adding a new high score and returning the current high scores
 class HighScore
 {
     vector<Score> scores;
 public:
     HighScore();
-    vector<Score> getHighScores();
-    void addNewScore(Score s);
+    vector<Score> get_high_scores();
+    void add_new_score(Score s);
     
 };
 

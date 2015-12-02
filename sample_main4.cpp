@@ -4,34 +4,8 @@
 #include "Graph.h"
 #include "GUI.h"
 #include "HighScore.h"
-vector<Ellipse*> Pancake_Maker(int level) {
-	vector<Ellipse*> pancakes;
-	vector<int> integers;
-	for (int i = 0; i < level; i++) {
-		integers.push_back(100-7*i);	
-	}
-	random_shuffle(integers.begin(),integers.end());
-	for (int j = 0; j < level; j++) {
-		Ellipse* temp = new Ellipse(Point(300, 300-20*j), integers[j], 20);
-		pancakes.push_back(temp);
-	}
-	return pancakes;
-}
-
-vector<Ellipse*> Pancake_Maker(int level) {
-	vector<Ellipse*> pancakes;
-	vector<int> integers;
-	for (int i = 0; i < level; i++) {
-		integers.push_back(100-7*i);	
-	}
-	random_shuffle(integers.begin(),integers.end());
-	for (int j = 0; j < level; j++) {
-		Ellipse* temp = new Ellipse(Point(300, 300-20*j), integers[j], 20);
-		pancakes.push_back(temp);
-	}
-	return pancakes;
-}
-// A function to flip the pancakes, with the integer given being the number of pancakes to flip
+#include "new.h"
+Pancake gudpancakes;
 void flip(vector<Ellipse*> &pancakes, int num)
 {
     int top = 0;
@@ -102,10 +76,6 @@ try {
 	win1.attach(Rules);
 	win1.wait_for_button();
 	win1.detach(Rules);
-	Text Rules(Point(50,200), "Rules are for nerds");
-	win1.attach(Rules);
-	win1.wait_for_button();
-	win1.detach(Rules);
         display_high_scores(win1);
 	Text Level_Chooser(Point(200,200), "Choose from <insert buttons> to know how many pancakes");
 	win1.attach(Level_Chooser);
@@ -115,8 +85,8 @@ try {
 	while (level != 0) {
 		cout << "type your level between 1 and 9" << endl;
 		cin >> level;
-		vector<Ellipse*> pancakes = Pancake_Maker(level);
-		for(int i=0; i < level; i++) {
+		vector<Ellipse*> pancakes = gudpancakes.Pancake_Maker(level);
+		for(int i=0; i < level; i++){
         		pancakes[i]->set_fill_color(94);
 			win1.attach(*(pancakes[i]));
   		}
@@ -126,9 +96,10 @@ try {
 		}
 	cout << "type your level between 1 and 9" << endl;
 	cin >> level;
-	vector<Ellipse*> pancakes = Pancake_Maker(level);
+	//vector<Ellipse*> pancakes = Pancake::Pancake_Maker(level);
 	for(int i=0; i < level; i++) {
         	pancakes[i]->set_fill_color(94);
+		win1.detach(Rules);
 		win1.attach(*(pancakes[i]));
   	}
 	win1.wait_for_button();
@@ -137,10 +108,10 @@ try {
         {
 		win1.detach(*(pancakes[i]));
 	}
-	for (int i = 0; i < pancakes.size(); ++i)
-	{
-		delete pancakes[i];
-	}
+	//for (int i = 0; i < pancakes.size(); ++i)
+	//{
+	//	delete pancakes[i];
+	//}
 }
 	return 0;
 }

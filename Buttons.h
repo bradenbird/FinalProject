@@ -59,8 +59,8 @@ private:
 };
 
 
-pancake_window2::pancake_window2(Point xy, int w, int h, const string& title)
-    :Window(xy,w,h,title),
+pancake_window2::pancake_win1(Point xy, int w, int h, const string& title)
+    :Simple_window(xy,w,h,title),
 	quit_button2(Point(x_max()-70,y_max()-20), 70, 20, "&QUIT", cb_quit2), //quit button
 	initials(Point(315,0),70,20,"Initials: "),
 	enter_button(Point(415,0),70,20,"ENTER", cb_enter), //enters initials

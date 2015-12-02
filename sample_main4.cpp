@@ -3,7 +3,7 @@
 #include "Simple_window.h"
 #include "Graph.h"
 #include "GUI.h"
-<<<<<<< HEAD
+#include "HighScore.h"
 vector<Ellipse*> Pancake_Maker(int level) {
 	vector<Ellipse*> pancakes;
 	vector<int> integers;
@@ -17,9 +17,6 @@ vector<Ellipse*> Pancake_Maker(int level) {
 	}
 	return pancakes;
 }
-=======
-#include "HighScore.h"
->>>>>>> d4f0660034085271f37234dbcc920145d5515a6f
 
 vector<Ellipse*> Pancake_Maker(int level) {
 	vector<Ellipse*> pancakes;
@@ -93,10 +90,7 @@ void display_high_scores(Simple_window &win1)
 int main()
 try {
   Simple_window win1(Point(100,200),600,400, "pancake");
-<<<<<<< HEAD
-=======
 	//Vector_ref<Ellipse> pancakes = Pancake_Maker(9);
->>>>>>> d4f0660034085271f37234dbcc920145d5515a6f
 	Image Splash_image(Point(0,0), "basic-pancake-recipe.jpg", Suffix::jpg);
 	Text Splash_text(Point(100,300), "Obligatory splash screen to appeal to the grading rubrik nazis");
 	win1.attach(Splash_image);
@@ -104,24 +98,20 @@ try {
 	win1.wait_for_button();
 	win1.detach(Splash_text);
 	win1.detach(Splash_image);
-<<<<<<< HEAD
 	Text Rules(Point(50,200), "Rules are for nerds make sure to cp for reasons on the last slide");
 	win1.attach(Rules);
 	win1.wait_for_button();
 	win1.detach(Rules);
-=======
 	Text Rules(Point(50,200), "Rules are for nerds");
 	win1.attach(Rules);
 	win1.wait_for_button();
 	win1.detach(Rules);
         display_high_scores(win1);
->>>>>>> d4f0660034085271f37234dbcc920145d5515a6f
 	Text Level_Chooser(Point(200,200), "Choose from <insert buttons> to know how many pancakes");
 	win1.attach(Level_Chooser);
 	win1.wait_for_button();
 	win1.detach(Level_Chooser);
 	int level =1;
-<<<<<<< HEAD
 	while (level != 0) {
 		cout << "type your level between 1 and 9" << endl;
 		cin >> level;
@@ -134,8 +124,6 @@ try {
 		for (int i = 0; i < level; i++) {
 			win1.detach(*(pancakes[i]));
 		}
-	
-=======
 	cout << "type your level between 1 and 9" << endl;
 	cin >> level;
 	vector<Ellipse*> pancakes = Pancake_Maker(level);
@@ -149,15 +137,11 @@ try {
         {
 		win1.detach(*(pancakes[i]));
 	}
->>>>>>> d4f0660034085271f37234dbcc920145d5515a6f
 	for (int i = 0; i < pancakes.size(); ++i)
 	{
 		delete pancakes[i];
 	}
-<<<<<<< HEAD
 }
-=======
->>>>>>> d4f0660034085271f37234dbcc920145d5515a6f
 	return 0;
 }
 catch(exception& e) {

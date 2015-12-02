@@ -19,7 +19,6 @@ vector<Ellipse*> Pancake_Maker(int level) {
 int main()
 try {
   Simple_window win1(Point(100,200),600,400, "pancake");
-	//Vector_ref<Ellipse> pancakes = Pancake_Maker(9);
 	Image Splash_image(Point(0,0), "basic-pancake-recipe.jpg", Suffix::jpg);
 	Text Splash_text(Point(100,300), "Obligatory splash screen to appeal to the grading rubrik nazis");
 	win1.attach(Splash_image);
@@ -27,7 +26,7 @@ try {
 	win1.wait_for_button();
 	win1.detach(Splash_text);
 	win1.detach(Splash_image);
-	Text Rules(Point(50,200), "Rules are for nerds");
+	Text Rules(Point(50,200), "Rules are for nerds make sure to cp for reasons on the last slide");
 	win1.attach(Rules);
 	win1.wait_for_button();
 	win1.detach(Rules);

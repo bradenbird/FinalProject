@@ -4,7 +4,6 @@
 #include "Graph.h"
 #include "GUI.h"
 #include "HighScore.h"
-#include <algorithm>
 
 vector<Ellipse*> Pancake_Maker(int level) {
 	vector<Ellipse*> pancakes;
@@ -51,19 +50,19 @@ void display_high_scores(Simple_window &win1)
         vector<Score> score_vector = scores.get_high_scores();
         Text header(Point(30,60),column_header.str());
         win1.attach(header);
-        vector<Text> text_scores;
+        vector<Text*> text_scores;
+	Text* t = new Text(Point(30,30), "hi!");
+	stringstream s;
         for(int i = 0; i< score_vector.size(); ++i)
         {
-            stringstream s;
             s << score_vector[i].get_name() << setw(20) << score_vector[i].get_score();
-            Text t(Point(30,30),"Hi");
-            text_scores.push_back(t);
-            win1.attach(text_scores[i]);
+		text_scores.push_back(t);
+            win1.attach(*(text_scores[i]));
         }
         win1.wait_for_button();
         win1.detach(header);
         for(int i = 0; i< text_scores.size(); ++i)
-            win1.detach(text_scores[i]);
+            win1.detach(*(text_scores[i]));
     }
     else
     {

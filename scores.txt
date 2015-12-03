@@ -1,5 +1,5 @@
-BILL 52
-James 30
-Braden 27
-Tom 26
-Sam 21
+BCB 50
+JFG 30
+BRT 27
+TEB 26
+THP 21

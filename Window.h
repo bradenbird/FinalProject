@@ -24,7 +24,8 @@ namespace Graph_lib
 
 //------------------------------------------------------------------------------
 
-    class Window : public Fl_Window { 
+    class Window : public Fl_Window 
+{ 
     public:
         // let the system pick the location:
         Window(int w, int h, const string& title);
@@ -47,11 +48,14 @@ namespace Graph_lib
         void detach(Widget& w);    // remove w from window (deactivates callbacks)
 
         void put_on_top(Shape& p); // put p on top of other shapes
-
+	bool wait_for_button(); // simple event loop	
     protected:
         void draw();
 
     private:
+	//Button next_button();
+	bool button_pushed;
+	//Button next_button;
         vector<Shape*> shapes;     // shapes attached to window
         int w,h;                   // window size
 

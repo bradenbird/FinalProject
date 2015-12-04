@@ -3,15 +3,17 @@
 
 HighScore::HighScore()
 {
-    fstream file;
+    ifstream file;
     string new_name;
     int new_score;
     file.open("scores.txt");
     while(!file.eof())
     {
         file >> new_name;
+	if(new_name == "END_FILE")break;
         file >> new_score;
-        scores.push_back(Score(new_name, new_score));
+	cout << new_name << " " << new_score << endl;
+        scores.push_back(Score(new_name, new_score));	
     }
     file.close();
 }
@@ -40,13 +42,14 @@ void HighScore::add_new_score(Score s)
             } 
         }
     ofstream file;
-    cout << remove("scores.txt");
-    if(scores.size()!=0)
-        scores.pop_back();
+    remove("scores.txt");
+    if(scores.size() < 5)
+        scores.push_back(s);
     file.open("scores.txt");
     for(auto s: scores)
     {
         file << s.get_name() << ' ' << s.get_score() << '\n';
     }
+    file << "END_FILE";
     file.close();
 }

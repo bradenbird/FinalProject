@@ -4,18 +4,13 @@
 #include "GUI.h"
 
 using namespace Graph_lib;
+	
 
-<<<<<<< HEAD
 class pancake_window2 : public Graph_lib::Window {
 public: pancake_window2 ( Point xy, int w, int h, const string& title );
-	int wait_for_button();
-	int button_pressed;	
-=======
-class pancake_window2 : Graph_lib::Window {
-public: pancake_window2 ( Point xy, int w, int h, const string& title );
 	
 	
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
+
 private:
 	//Widgets
 	Button quit_button2; //quit button
@@ -66,13 +61,9 @@ private:
 };
 
 
-<<<<<<< HEAD
+
 pancake_window2::pancake_window2(Point xy, int w, int h, const string& title)
     :Window(xy,w,h,title),
-=======
-pancake_window2::pancake_win1(Point xy, int w, int h, const string& title)
-    :Simple_window(xy,w,h,title),
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
 	quit_button2(Point(x_max()-70,y_max()-20), 70, 20, "&QUIT", cb_quit2), //quit button
 	initials(Point(315,0),70,20,"Initials: "),
 	enter_button(Point(415,0),70,20,"ENTER", cb_enter), //enters initials
@@ -110,8 +101,8 @@ pancake_window2::pancake_win1(Point xy, int w, int h, const string& title)
 	attach(nine_button);
 
 }
-<<<<<<< HEAD
-int pancake_window2::wait_for_button()
+
+/*int pancake_window2::wait_for_button()
 {	
 	//pancake_window2 cow(Point(200,200),200,200,"cow");
 	button_pressed = 0;
@@ -119,15 +110,14 @@ int pancake_window2::wait_for_button()
 	Fl::wait();
 	cout << button_pressed << endl;
 	return button_pressed;
-}
+}*/
 //------------------------------------------------------------------------------
-void pancake_window2::cb_quit2(Address, Address pw) {
-=======
+
 //------------------------------------------------------------------------------
 void pancake_window2::cb_quit2(Address, Address pw)
 {
 	reference_to<pancake_window2>(pw).quit2();
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
+
 } 
 void pancake_window2::quit2()
 {
@@ -143,11 +133,11 @@ void pancake_window2::cb_enter(Address, Address pw)
 void pancake_window2::enter() 
 {
 	
-<<<<<<< HEAD
-}
-=======
 
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
+}
+
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void pancake_window2::cb_dir(Address, Address pw)
@@ -156,7 +146,7 @@ void pancake_window2::cb_dir(Address, Address pw)
 }
 void pancake_window2::dir() 
 {
-	cout << "how to button works";
+	//cout << "how to button works";
 	bool button_pushed = true;
 	hide();
 	//directions window info
@@ -178,29 +168,19 @@ void pancake_window2::back()
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
 void pancake_window2::cb_two(Address, Address pw)
 {
 	reference_to<pancake_window2>(pw).two();
 }
-<<<<<<< HEAD
-void  pancake_window2::two() 
-{	bool button_pushed = true;
-	button_pressed = 2;
-	
-	hide();
 
-	//gui_main();
-=======
 void pancake_window2::two() 
 {
 	bool button_pushed = true;
-	
+	cout << "HELLO";
 	hide();
 
 	gui_main();
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
+
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -308,11 +288,11 @@ void pancake_window2::nine()
 gui_main();
 }
 
-<<<<<<< HEAD
+
 /*int main()
 =======
 int main()
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
+
 try {
 pancake_window2 win{Point{100,100},600,400,"Pancake"};
 return gui_main();
@@ -325,8 +305,8 @@ catch (...) {
 cerr << "Some exception\n";
 
 
-<<<<<<< HEAD
+
 }*/
-=======
-}
->>>>>>> 18ffb98c180e46f1696e93706d33034eb875165c
+
+
+

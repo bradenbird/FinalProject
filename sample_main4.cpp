@@ -12,7 +12,12 @@ void flip(vector<Ellipse*> &pancakes, int num)
     int top = 0;
     int bottom = num-1;
     while(top<bottom)
+    {
+	int temp = pancakes[top]->minor();
+	pancakes[top]->set_minor(pancakes[bottom]->minor());
+	pancakes[bottom]->set_minor(temp);
         swap(pancakes[top],pancakes[bottom]);
+    }
 }
 
 //A function to use find solution to determine the number of flips required to solve the stack of pancakes
@@ -41,6 +46,7 @@ void display_high_scores(Simple_window &win1)
         vector<Text*> text_scores;
 	Text* t;// = new Text(Point(30,30), "hi!");
 	stringstream s;
+	cout << "Score Size: " << score_vector.size() <<  "\n";
         for(int i = 0; i< score_vector.size(); ++i)
         {
 	    s.str(string());
@@ -68,7 +74,7 @@ void display_high_scores(Simple_window &win1)
 int main()
 try {
   	Simple_window win1(Point(100,200),600,400, "pancake");
-	win1.show();
+	//win1.show();
 	Image Splash_image(Point(0,0), "basic-pancake-recipe.jpg", Suffix::jpg);
 	Text Splash_text(Point(100,300), "Pancake Flipping! By: Michael Brinkman, Heather Berry, and Braden Bird");
 	win1.attach(Splash_image);
@@ -94,10 +100,11 @@ try {
 	pancake_window2 win2{Point{150,150},600,400,"Play"};	
 	int level = 5;
 	while (level != 0) {
-		cout << "type your level between 1 and 9" << endl;
+		//cout << "type your level between 1 and 9" << endl;
 		win2.show();
-		win2.wait_for_button();
-		level= win2.button_pressed;
+		Fl::run();
+		//win2.wait_for_button();
+		//level= win2.button_pressed;
 		cout << "I waited\n";
 		vector<Ellipse*> pancakes = gudpancakes.Pancake_Maker(level);
 		for(int i=0; i < level; i++){
@@ -105,9 +112,9 @@ try {
 			win2.attach(*(pancakes[i]));
   		}
 		win2.redraw();
-		cout << win2.button_pressed << endl;
+		//cout << win2.button_pressed << endl;
 		cout << "I attached pancakes\n";
-		win2.wait_for_button();	
+		//win2.wait_for_button();	
 		//for (int i = 0; i < level; i++) {
 		//	win2.detach(*(pancakes[i]));
 		//}

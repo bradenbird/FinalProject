@@ -13,10 +13,11 @@ struct Pancake : Shape {
                 return pancakes;
                 }
         ~Pancake() {
-                for (int i = 0; i < pancakes.size(); ++i)
-                {
+                for (int i = 0; i < pancakes.size(); ++i) {
                         delete pancakes[i];
                 }
+		//for (int l = 0; j < integers.size(); ++l() {
+		//	delete integers[j];
         }
 };
 
